@@ -26,6 +26,8 @@ h4 {
   margin: 1rem 0;
 }
 
+
+
 .search-form {
     display: flex;
       flex-direction: column;
@@ -134,7 +136,8 @@ ul{
     border: solid black;
     border-width: 1px;
     margin-top: 10px;
-    margin-left: 10px ;
+    margin-left: 10px;
+   
 }
 p {
     display: inline-block;

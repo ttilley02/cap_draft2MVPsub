@@ -9,21 +9,11 @@ windSpeed:15,
 waveHeight:7,
 visibility:1852,
 describe:"Sailing is ...",
-html:
-`
-<div> Sailing </div>
-<img class="pic">image placeholder</img>
-<div>description placeholder</div>
-<p>Here are some resources</p>
-<ul>
-  <li src=>link1</li>
-  <li src=>link2</li>
-<ul>
-`,
-photo:"placeholder",
-links:"placeholderForLinks"
-
-},
+image:"img/sailing.jpg",
+imageico:"img/sailingico.jpg",
+activityTense: 'Sail'
+}
+,
 {
 activity:"Hiking",
 apparentTemperatureLow:0,
@@ -32,19 +22,137 @@ windSpeed:100,
 waveHeight:100,
 visibility:0,
 describe:"Hiking is ...",
-html: 
-`
-<div> Hiking </div>
-<img class="pic">image placeholder</img>
-<div>description placeholder</div>
-<p>Here are some resources</p>
-<ul>
-  <li src=>link1</li>
-  <li src=>link2</li>
-<ul>
-`,
 photo:"placeholder",
-links:"placeholderForLinks"
+links:"placeholderForLinks",
+image:"img/hiking.jpg",
+imageico: "img/hikingico.jpg",
+activityTense: 'hike'
+}
+,
+{
+activity:"Fishing",
+apparentTemperatureLow:0,
+probabilityOfPrecipitation:60,
+windSpeed:10,
+waveHeight:2,
+visibility:0,
+describe:"Fishing is ...",
+photo:"placeholder",
+links:"placeholderForLinks",
+image:"img/fishing.jpg",
+imageico: "img/fishingico.jpg",
+activityTense: 'fish'
+}
+,
+{
+activity:"Drone_Flying",
+apparentTemperatureLow:0,
+probabilityOfPrecipitation:10,
+windSpeed:10,
+waveHeight:100,
+visibility:0,
+describe:"Drone flying is ...",
+photo:"placeholder",
+links:"placeholderForLinks",
+image:"img/drone.jpg",
+imageico:"img/droneico.jpg",
+activityTense: 'fly a drone'
+}
+,
+
+{
+activity:"Kite_Flying",
+apparentTemperatureLow:0,
+probabilityOfPrecipitation:40,
+windSpeed:100,
+waveHeight:0,
+visibility:1609,
+describe:"Kite flying is ...",
+photo:"placeholder",
+links:"placeholderForLinks",
+image:"img/kite.jpg",
+imageico:"img/kiteico.jpg",
+activityTense: 'fly a kite'
+}
+,
+
+{
+activity:"Star_Gazing",
+apparentTemperatureLow:0,
+probabilityOfPrecipitation:75,
+windSpeed:100,
+waveHeight:100,
+visibility:241140,
+describe:"Star gazing is ...",
+photo:"placeholder",
+links:"placeholderForLinks",
+image:"img/stars.jpg",
+imageico: "img/starsico.jpg",
+activityTense: 'gaze at the stars'
+}
+,
+
+{
+activity:"Baseball",
+apparentTemperatureLow:0,
+probabilityOfPrecipitation:30,
+windSpeed:100,
+waveHeight:100,
+visibility:0,
+describe:"baseball is ...",
+photo:"placeholder",
+links:"placeholderForLinks",
+image:"img/baseball.jpg",
+imageico:"img/baseballico.jpg",
+activityTense: 'play baseball'
+}
+,
+
+{
+activity:"Rock_Climbing",
+apparentTemperatureLow:0,
+probabilityOfPrecipitation:75,
+windSpeed:100,
+waveHeight:100,
+visibility:0,
+describe:"Rock Climbing is ...",
+photo:"placeholder",
+links:"placeholderForLinks",
+image:"img/rock.jpg",
+imageico:"img/rockico.jpg",
+activityTense: 'rock climb'
+}
+,
+
+{
+activity:"Cycling",
+apparentTemperatureLow:0,
+probabilityOfPrecipitation:80,
+windSpeed:5,
+waveHeight:100,
+visibility:0,
+describe:"Cycling is ...",
+photo:"placeholder",
+links:"placeholderForLinks",
+image:"img/cycling.jpg",
+imageico:"img/cyclingico.jpg",
+activityTense: 'bike'
+}
+,
+
+{
+activity:"Motorcycling",
+apparentTemperatureLow:0,
+probabilityOfPrecipitation:60,
+windSpeed:10,
+waveHeight:100,
+visibility:0,
+describe:"Motorcyling is ...",
+photo:"placeholder",
+links:"placeholderForLinks",
+image:"img/moto.jpg",
+imageico:"img/motoico.jpg",
+activityTense: 'go for a ride'
 }
 ];
 
@@ -134,7 +242,7 @@ let qualifiedActivities =
     $(".js-suggested").append(
       `<div class="${doableStuff[i].activity} activity">
       <div class="activity-photo">
-         photo
+      <img src=${doableStuff[i].imageico}>
       </div>
       <p>${doableStuff[i].activity}</p>
     </div>
@@ -143,10 +251,6 @@ let qualifiedActivities =
 
       
     }
-    /*console.log(qualifiedArray.length);  
-    for(let i = 0; i < qualifiedArray.length; i++){
-      $('.activitiesList').append(qualifiedArray[i].html)
-      }  */
       activityPages(doableStuff)
  })
 }
@@ -157,12 +261,12 @@ function activityPages(doableStuff){
 
     let pageHtml = `<h1>${doableStuff[i].activity}</h1>
   <div class="activity-photo-big">
-      PHOTO CORRESPONDING TO ACTIVITY
+    <img src=${doableStuff[i].image}>
       </div>
- <br><h2>Here are some links you may find helpful if youre going outside to PLACEHOLDER</h2>
+ <br><h2>Here are some links you may find helpful if youre going outside to ${doableStuff[i].activityTense}</h2>
   <ul>
-      <li>LINK</li>
-      <li>LINK</li>
+      <li><a href='https://duckduckgo.com/?t=ffab&q=${doableStuff[i].activity}+near+me&ia=places'> ${doableStuff[i].activity} near me  </a></li>
+      <li><a href='https://en.wikipedia.org/wiki/${doableStuff[i].activity}'>More ${doableStuff[i].activity} info</a> </li>
   </ul>
   <input class="back" type="button" value="Back">
   <input class="home" type="button" value="Home">`
@@ -178,16 +282,16 @@ function activityPages(doableStuff){
 }
 
 function backButton(doableStuff){
-    $('.container').on('click',".back", e=> {
-      console.log('back button click')
-      let qualifiedActivities = 
-`
-<h1>Look at what you can do</h1>
-<section class= "activitiesList">
+$('.container').on('click',".back", e=> {
+      
+    let qualifiedActivities = 
+    `
+    <h1>Look at what you can do</h1>
+    <section class= "activitiesList">
 
-<ul class="js-suggested">
-</section>
-`
+    <ul class="js-suggested">
+    </section>
+    `
 $('.container').html(qualifiedActivities)
      
       
@@ -195,7 +299,7 @@ $('.container').html(qualifiedActivities)
     $(".js-suggested").append(
       `<div class="${doableStuff[i].activity} activity">
       <div class="activity-photo">
-         photo
+      <img src=${doableStuff[i].imageico}>
       </div>
       <p>${doableStuff[i].activity}</p>
     </div>

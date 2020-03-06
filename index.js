@@ -59,7 +59,7 @@ function canIDoIt(tempNum,precipNum,windNum,waveNum,sightNum){
   {
     if(tempNum >= activityStorage[i].apparentTemperatureLow && precipNum <= activityStorage[i].probabilityOfPrecipitation && windNum <= activityStorage[i].windSpeed && waveNum <= activityStorage[i].waveHeight && sightNum > activityStorage[i].visibility)
     {
-      newArray.push(activityStorage[i].activity);
+      newArray.push(activityStorage[i]);
       qualifiedArray.push(activityStorage[i]);
       
     }
@@ -126,24 +126,93 @@ let qualifiedActivities =
 `
 
  $('.container').on('click', '.activites', e => {
-     console.log('suggestedActivities click')
+     console.log(doableStuff)
      $('.container').html(qualifiedActivities)
-
-    
+     
+      
      for(let i = 0; i < doableStuff.length; i++){
     $(".js-suggested").append(
-      `<li>  ${doableStuff[i]}
-      <input class="${doableStuff[i]}" type="button" value="details">
-      </li>
+      `<div class="${doableStuff[i].activity} activity">
+      <div class="activity-photo">
+         photo
+      </div>
+      <p>${doableStuff[i].activity}</p>
+    </div>
       `
       )
+
+      
     }
-    console.log(qualifiedArray.length);  
+    /*console.log(qualifiedArray.length);  
     for(let i = 0; i < qualifiedArray.length; i++){
       $('.activitiesList').append(qualifiedArray[i].html)
-      }  
-
+      }  */
+      activityPages(doableStuff)
  })
+}
+
+function activityPages(doableStuff){
+  for(let i = 0; i < doableStuff.length; i++){
+   $(`.${doableStuff[i].activity}.activity`).on('click', e=>{
+
+    let pageHtml = `<h1>${doableStuff[i].activity}</h1>
+  <div class="activity-photo-big">
+      PHOTO CORRESPONDING TO ACTIVITY
+      </div>
+ <br><h2>Here are some links you may find helpful if youre going outside to PLACEHOLDER</h2>
+  <ul>
+      <li>LINK</li>
+      <li>LINK</li>
+  </ul>
+  <input class="back" type="button" value="Back">
+  <input class="home" type="button" value="Home">`
+    
+    console.log(`${doableStuff[i].activity}`)
+
+    $('.container').html(pageHtml)
+
+  })
+   
+  }
+  backButton(doableStuff);
+}
+
+function backButton(doableStuff){
+    $('.container').on('click',".back", e=> {
+      console.log('back button click')
+      let qualifiedActivities = 
+`
+<h1>Look at what you can do</h1>
+<section class= "activitiesList">
+
+<ul class="js-suggested">
+</section>
+`
+$('.container').html(qualifiedActivities)
+     
+      
+     for(let i = 0; i < doableStuff.length; i++){
+    $(".js-suggested").append(
+      `<div class="${doableStuff[i].activity} activity">
+      <div class="activity-photo">
+         photo
+      </div>
+      <p>${doableStuff[i].activity}</p>
+    </div>
+      `
+      )
+
+      
+    }
+    /*console.log(qualifiedArray.length);  
+    for(let i = 0; i < qualifiedArray.length; i++){
+      $('.activitiesList').append(qualifiedArray[i].html)
+      }  */
+      activityPages(doableStuff)
+
+      
+    
+  })
 }
 
 
@@ -287,3 +356,4 @@ function displayPosition(string){
 
 getPos();
 activitylisted();
+

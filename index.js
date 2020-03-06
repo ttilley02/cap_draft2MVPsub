@@ -46,7 +46,7 @@ activityTense: 'fish'
 ,
 {
 activity:"Drone_Flying",
-apparentTemperatureLow:0,
+apparentTemperatureLow:100,
 probabilityOfPrecipitation:10,
 windSpeed:10,
 waveHeight:100,
@@ -62,7 +62,7 @@ activityTense: 'fly a drone'
 
 {
 activity:"Kite_Flying",
-apparentTemperatureLow:0,
+apparentTemperatureLow:32,
 probabilityOfPrecipitation:40,
 windSpeed:100,
 waveHeight:0,
@@ -78,7 +78,7 @@ activityTense: 'fly a kite'
 
 {
 activity:"Star_Gazing",
-apparentTemperatureLow:0,
+apparentTemperatureLow:32,
 probabilityOfPrecipitation:75,
 windSpeed:100,
 waveHeight:100,
@@ -94,7 +94,7 @@ activityTense: 'gaze at the stars'
 
 {
 activity:"Baseball",
-apparentTemperatureLow:0,
+apparentTemperatureLow:45,
 probabilityOfPrecipitation:30,
 windSpeed:100,
 waveHeight:100,
@@ -110,7 +110,7 @@ activityTense: 'play baseball'
 
 {
 activity:"Rock_Climbing",
-apparentTemperatureLow:0,
+apparentTemperatureLow:40,
 probabilityOfPrecipitation:75,
 windSpeed:100,
 waveHeight:100,
@@ -126,7 +126,7 @@ activityTense: 'rock climb'
 
 {
 activity:"Cycling",
-apparentTemperatureLow:0,
+apparentTemperatureLow:50,
 probabilityOfPrecipitation:80,
 windSpeed:5,
 waveHeight:100,
@@ -142,7 +142,7 @@ activityTense: 'bike'
 
 {
 activity:"Motorcycling",
-apparentTemperatureLow:0,
+apparentTemperatureLow:60,
 probabilityOfPrecipitation:60,
 windSpeed:10,
 waveHeight:100,
